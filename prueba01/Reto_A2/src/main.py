@@ -20,7 +20,7 @@ def main(page: ft.Page):
     def mostrar_inicio():
         estado["actual"] = "inicio"
         page.bgcolor = None
-        texto.value = "🤖 ¿quiere contarme sobre tus cosas escolares?"
+        texto.value = "👀 ¿quiere contarme sobre tus cosas escolares?"
         imagen.visible = False
         btn_si.visible = True
         btn_no.visible = True
@@ -41,7 +41,7 @@ def main(page: ft.Page):
 
     def a_pregunta4_si():
         estado["actual"] = "p4_si"
-        texto.value = "estas seguro?? "
+        texto.value = "quiere que la escuela tenga mas hora libre?? "
         imagen.visible = False
         page.update()
         
@@ -80,6 +80,7 @@ def main(page: ft.Page):
         texto.value = "cree q pueda salir de la prepa??"
         imagen.visible = False
         page.update()
+
 
     def a_pregunta2_talvez():
         estado["actual"] = "p2_talvez"
@@ -135,55 +136,6 @@ def main(page: ft.Page):
         imagen.visible = False
         page.update()
 
-    def a_pregunta2_no():
-        estado["actual"] = "p2_no"
-        texto.value = " okey :c"
-        imagen.visible = False
-        page.update()
-    
-    def a_pregunta3_no():
-        estado["actual"] = "p3_no"
-        texto.value = "estas seguero??"
-        imagen.visible = False
-        page.update()
-    def a_pregunta4_no():
-        estado["actual"] = "p4_no"
-        texto.value = "estas seguro??"
-        imagen.visible = False
-        page.update()
-    def a_pregunta5_no():
-        estado["actual"] = "p5_no"
-        texto.value = "estas seguro??"
-        imagen.visible = False
-        page.update()
-    def a_pregunta6_no():
-        estado["actual"] = "p6_no"
-        texto.value = "estas seguro??"
-        imagen.visible = False
-        page.update()
-    def a_pregunta7_no():
-        estado["actual"] = "p7_no"
-        texto.value = "estas seguro??"
-        imagen.visible = False
-        page.update()
-    def a_pregunta8_no():
-        estado["actual"] = "p8_no"
-        texto.value = "estas seguro??"
-        imagen.visible = False
-        page.update()
-    def a_pregunta9_no():
-        estado["actual"] = "p9_no"
-        texto.value = "estas seguro??"
-        imagen.visible = False
-        page.update()
-    def a_pregunta10_no():
-        estado["actual"] = "p10_no"
-        texto.value = "estas seguro??"
-        imagen.visible = False
-        page.update()
-        
-
-
 
 
 
@@ -198,7 +150,7 @@ def main(page: ft.Page):
 
     def final_medio():
         estado["actual"] = "final_medio"
-        texto.value = "hey, no me dejes con la duda,reinicia >:C"
+        texto.value = "hey, estabas tan cercas ,reinicia >:C"
         page.bgcolor = ft.Colors.RED_50   # ✅ corregido
         btn_si.visible = False
         btn_no.visible = False
@@ -275,44 +227,62 @@ def main(page: ft.Page):
         page.bgcolor = ft.Colors.YELLOW_100
         btn_si.visible = False
         btn_no.visible = False
-        btn_tal.visible = False
+        btn_talvez.visible = False
         page.update()
+
+    def on_si(e):
+        if estado["actual"] == "inicio":
+            a_pregunta2_si()
+        elif estado["actual"] in ["p2_si", "p2_talvez"]:
+            a_pregunta3_si()
+        elif estado["actual"] in ["p3_si", "p3_talvez"]:
+            a_pregunta4_si()
+        elif estado["actual"] in ["p4_si", "p4_talvez"]:
+            a_pregunta5_si()
+        elif estado["actual"] in ["p5_si", "p5_talvez"]:
+            a_pregunta6_si()
+        elif estado["actual"] in ["p6_si", "p6_talvez"]:
+            a_pregunta7_si()
+        elif estado["actual"] in ["p7_si", "p7_talvez"]:
+            a_pregunta8_si()
+        elif estado["actual"] in ["p8_si", "p8_talvez"]:
+            a_pregunta9_si()
+        elif estado["actual"] in ["p9_si", "p9_talvez"]:
+            a_pregunta10_si()
+        elif estado["actual"] in ["p10_si", "p10_talvez"]:
+            final_bueno()
+        # agrega más elif para crecer tu historia                               
+
+
+
+
+
+
+
 
     def on_tal(e):
         if estado["actual"] == "inicio":
             a_pregunta2_talvez()
-        elif estado["actual"] == "p2_talvez":
+        elif estado["actual"] in ["p2_si", "p2_talvez"]:
             a_pregunta3_talvez()
-        elif estado["actual"] == "p3_talvez":
+        elif estado["actual"] in ["p3_si", "p3_talvez"]:
             a_pregunta4_talvez()
-        elif estado["actual"] == "p4_talvez":
+        elif estado["actual"] in ["p4_si", "p4_talvez"]:
             a_pregunta5_talvez()
-        elif estado["actual"] == "p5_talvez":
+        elif estado["actual"] in ["p5_si", "p5_talvez"]:
             a_pregunta6_talvez()
-        elif estado["actual"] == "p6_talvez":
+        elif estado["actual"] in ["p6_si", "p6_talvez"]:
             a_pregunta7_talvez()
-        elif estado["actual"] == "p7_talvez":
+        elif estado["actual"] in ["p7_si", "p7_talvez"]:
             a_pregunta8_talvez()
-        elif estado["actual"] == "p8_talvez":
+        elif estado["actual"] in ["p8_si", "p8_talvez"]:
             a_pregunta9_talvez()
-        elif estado["actual"] == "p9_talvez":
+        elif estado["actual"] in ["p9_si", "p9_talvez"]:
             a_pregunta10_talvez()
-        elif estado["actual"] == "p10_talvez":
+        elif estado["actual"] in ["p10_si", "p10_talvez"]:
             final_talvez()
         # Puedes seguir agregando más preguntas si lo deseas
 
-    def on_reset(e):
-            a_pregunta6_si()
-        elif estado["actual"] == "p6_si":
-            a_pregunta7_si()
-        elif estado["actual"] == "p7_si":
-            a_pregunta8_si()
-        elif estado["actual"] == "p8_si":
-            a_pregunta9_si()
-        elif estado["actual"] == "p9_si":
-            a_pregunta10_si()
-        elif estado["actual"] == "p10_si":
-            final_bueno()
             
         # agrega más elif para crecer tu historia
     def on_no(e):
@@ -359,3 +329,6 @@ def main(page: ft.Page):
     mostrar_inicio()
 
 ft.app(target=main)
+
+
+
